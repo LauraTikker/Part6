@@ -17,6 +17,25 @@ const asObject = (anecdote) => {
   }
 }
 
+export const changeVote = (id) => {
+  return {
+    type: 'VOTE',
+    data: {
+      id: id
+    }
+  }
+}
+
+export const addAnecdote = (newAnecdote) => {
+  return {
+    type: 'NEW',
+    data: {
+      newAnecdote: newAnecdote
+      
+    }
+  }
+}
+
 const initialState = anecdotesAtStart.map(asObject)
 
 const sortAncdotes = (anecdotes) => {
