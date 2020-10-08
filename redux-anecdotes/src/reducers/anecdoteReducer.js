@@ -1,3 +1,4 @@
+
 const anecdotesAtStart = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
@@ -42,14 +43,13 @@ const sortAncdotes = (anecdotes) => {
   return anecdotes.sort((a, b) => a.votes > b.votes ? -1 : a.votes < b.votes ? 1 : 0)
 }
 
-const reducer = (state = initialState, action) => {
-  console.log('state now: ', state)
-  console.log('action', action)
+const anecdoteReducer = (state = initialState, action) => {
   switch (action.type)  {
     case 'VOTE': {
       const id = action.data.id
       const previousStateOfAnecdote = state.find( anecdote => anecdote.id === id)
       const updatedAnecdote = {...previousStateOfAnecdote, votes: previousStateOfAnecdote.votes + 1}
+      // showNotification(previousStateOfAnecdote.content)
       return sortAncdotes(state.map(anecdote => anecdote.id !== id ? anecdote : updatedAnecdote))
     }
     case 'NEW': {
@@ -65,4 +65,4 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-export default reducer
+export default anecdoteReducer
