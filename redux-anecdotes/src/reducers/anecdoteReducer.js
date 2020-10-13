@@ -32,7 +32,6 @@ export const addAnecdote = (newAnecdote) => {
     type: 'NEW',
     data: {
       newAnecdote: newAnecdote
-      
     }
   }
 }
@@ -49,7 +48,6 @@ const anecdoteReducer = (state = initialState, action) => {
       const id = action.data.id
       const previousStateOfAnecdote = state.find( anecdote => anecdote.id === id)
       const updatedAnecdote = {...previousStateOfAnecdote, votes: previousStateOfAnecdote.votes + 1}
-      // showNotification(previousStateOfAnecdote.content)
       return sortAncdotes(state.map(anecdote => anecdote.id !== id ? anecdote : updatedAnecdote))
     }
     case 'NEW': {

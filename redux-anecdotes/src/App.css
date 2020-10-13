@@ -1,0 +1,33 @@
+body {
+    padding-left: 40px;
+  }
+
+.h2 {
+    margin-bottom: 20px;
+}
+
+.vote-notice  {
+    color: forestgreen;
+    background: lightgrey;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+.new-anecdote-notice  {
+  color: darkorange;
+  background: lightgrey;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.filter {
+  margin-bottom: 20px;
+  color: darkcyan;
+  background: lightgrey;
+}

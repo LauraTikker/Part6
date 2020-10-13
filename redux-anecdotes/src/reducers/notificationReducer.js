@@ -4,9 +4,18 @@ const initialState = {
     content: ''
 }
 
-export const showNotification = (content) => {
+export const showVotingNotification = (content) => {
     return {
         type: 'VOTED',
+        data: {
+            content: content
+        }
+    }
+}
+
+export const showNewAnecdoteNotice = (content) => {
+    return {
+        type: 'NEW ANECDOTE',
         data: {
             content: content
         }
@@ -26,7 +35,12 @@ const notificationReducer = (state = initialState, action) =>  {
     switch (action.type)  {
         case 'VOTED':
             return {
-                shown: 'SHOW',
+                shown: 'SHOW VOTING NOTICE',
+                content: action.data.content
+            }
+        case 'NEW ANECDOTE':
+            return {
+                shown: 'SHOW NEW ANECDOTE NOTICE',
                 content: action.data.content
             }
         case 'HIDE':
