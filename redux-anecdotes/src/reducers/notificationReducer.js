@@ -13,11 +13,12 @@ export const showVotingNotification = (content) => {
     }
 }
 
-export const showNewAnecdoteNotice = (content) => {
+export const showNewAnecdoteNotice = (newAnecdote) => {
     return {
         type: 'NEW ANECDOTE',
         data: {
-            content: content
+            newAnecdoteContent: newAnecdote.content
+
         }
     }
 }
@@ -41,7 +42,7 @@ const notificationReducer = (state = initialState, action) =>  {
         case 'NEW ANECDOTE':
             return {
                 shown: 'SHOW NEW ANECDOTE NOTICE',
-                content: action.data.content
+                content: action.data.newAnecdoteContent
             }
         case 'HIDE':
             return {
