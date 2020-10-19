@@ -1,48 +1,36 @@
 
+
 const initialState = {
     shown: 'DO NOT SHOW',
     content: ''
 }
 
-export const showVotingNotification = (content) => {
+export const showNotification = (notificationToShow) => {
     return {
-        type: 'VOTED',
+        type: 'SHOW',
         data: {
-            content: content
+            content: notificationToShow
         }
     }
 }
 
-export const showNewAnecdoteNotice = (newAnecdote) => {
-    return {
-        type: 'NEW ANECDOTE',
-        data: {
-            newAnecdoteContent: newAnecdote.content
-
-        }
+export const setNotification = (notificationToShow, time) => {
+    return async dispatch => {
+        dispatch(showNotification(notificationToShow))
+        setTimeout(() => {
+            dispatch({
+                type: 'HIDE'
+            })
+        }, time*1000)
     }
-}
-
-export const hideNotification = () => {
-    return {
-        type: 'HIDE',
-        data: {
-            content: ''
-        }
-    }
-}
+}  
 
 const notificationReducer = (state = initialState, action) =>  {
     switch (action.type)  {
-        case 'VOTED':
+        case 'SHOW':
             return {
-                shown: 'SHOW VOTING NOTICE',
+                shown: 'SHOW NOTICE',
                 content: action.data.content
-            }
-        case 'NEW ANECDOTE':
-            return {
-                shown: 'SHOW NEW ANECDOTE NOTICE',
-                content: action.data.newAnecdoteContent
             }
         case 'HIDE':
             return {
